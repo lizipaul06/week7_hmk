@@ -1,22 +1,30 @@
 <template lang="html">
-  <div v-if='movie'>
-    <h2 > {{movie.title}} </h2>
-    <p> Description: {{movie.description}} </p>
-    <p> Release date: {{movie.release_date}} </p>
-    <p> Director: {{movie.director}} </p>
-    <p> Producer: {{movie.producer}} </p>
-    <p> Rating: {{movie.rt_score}} </p>
+  <div v-if='activeMovie'>
+  <b-card
+   :title="activeMovie.title"
+   style="max-width: 20rem;"
+     class="mb-2">
+    <b-card-text>
+    <p> Description: {{activeMovie.description}} </p>
+    <p> Release date: {{activeMovie.release_date}} </p>
+    <p> Director: {{activeMovie.director}} </p>
+    <p> Producer: {{activeMovie.producer}} </p>
+    <p> Rating: {{activeMovie.rt_score}} </p>
+  </b-card-text>
+      <!-- <div v-for="catob in this.cat" :catob='catob'> {{catob.name}} </div> -->
+  </b-card>
   </div>
 </template>
 
 <script>
-
+import {mapstate, mapGetters} from 'vuex'
 
 export default {
   name: 'movie-details',
-  props: ['movie']
+  props: ['movie'],
+  computed: mapGetters(['activeMovie']),
+  }
 
-}
 </script>
 
 <style lang="css" scoped>
